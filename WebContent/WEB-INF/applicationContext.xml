@@ -1,0 +1,70 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- Activate Annotations in Beans -->
+	<context:annotation-config />
+	
+	<!-- Scan and Register Beans Under this Package -->
+	<context:component-scan base-package="gr.quizbomb" />	
+	
+	<!-- Configure JPA -->
+	<jpa:repositories base-package="gr.quizbomb.repository" />
+	
+	<!-- Load Configurations from Files -->
+	<context:property-placeholder location="classpath:properties/datasource.properties,
+		classpath:properties/hibernate.properties"/>
+	
+	<!-- Hikari Connection Pool Configuration -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="connectionTestQuery" value="SELECT 1" />
+		<property name="dataSourceClassName" value="${datasource.classname}" />
+		<property name="transactionIsolation" value="TRANSACTION_READ_COMMITTED" />					
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="url">${datasource.url}</prop>
+				<prop key="user">${datasource.username}</prop>
+				<prop key="password">${datasource.password}</prop>				
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Define Hikari Bean -->
+	<bean id="quizbombDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig" />
+	</bean>
+
+	<!-- Create the JPA Entity Manager Factory -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="quizbombDataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>gr.quizbomb.model</value>
+			</list>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>							
+				<prop key="hibernate.globally_quoted_identifiers">${hibernate.globally_quoted_identifiers}</prop>
+				<prop key="hibernate.hikari.idleTimeout">${hibernate.hikari.idleTimeout}</prop>
+				<prop key="hibernate.use_sql_comments">${hibernate.use_sql_comments}</prop>
+				<prop key="hibernate.generate_statistics">${hibernate.generate_statistics}</prop>
+			</props>
+		</property>
+		<property name="persistenceProvider">
+			<bean class="org.hibernate.jpa.HibernatePersistenceProvider" />
+		</property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+</beans>
