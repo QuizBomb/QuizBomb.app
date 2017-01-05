@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS `controller` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `class`
+-- Table structure for table `sclass`
 --
 
-CREATE TABLE IF NOT EXISTS `class` (
+CREATE TABLE IF NOT EXISTS `sclass` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `value` varchar(45) NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
@@ -50,9 +50,9 @@ CREATE TABLE IF NOT EXISTS `class` (
 
 CREATE TABLE IF NOT EXISTS `student` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `class_id` int(10) unsigned NOT NULL,
+  `sclass_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_student_class_id` FOREIGN KEY (`class_id`) REFERENCES `class` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_student_sclass_id` FOREIGN KEY (`sclass_id`) REFERENCES `sclass` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -67,19 +67,18 @@ CREATE TABLE IF NOT EXISTS `course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `pcc` (Professor-Class-Course)
+-- Table structure for table `psc` (Professor-SClass-Course)
 --
 
-CREATE TABLE IF NOT EXISTS `pcc` (
+CREATE TABLE IF NOT EXISTS `psc` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `professor_id` int(10) unsigned NOT NULL,
-  `class_id` int(10) unsigned NOT NULL,
+  `sclass_id` int(10) unsigned NOT NULL,
   `course_id` int(10) unsigned NOT NULL,
-  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_pcc_class_id` FOREIGN KEY (`class_id`) REFERENCES `class` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_pcc_course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_pcc_professor_id` FOREIGN KEY (`professor_id`) REFERENCES `professor` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_psc_sclass_id` FOREIGN KEY (`sclass_id`) REFERENCES `sclass` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_psc_course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_psc_professor_id` FOREIGN KEY (`professor_id`) REFERENCES `professor` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -91,10 +90,10 @@ CREATE TABLE IF NOT EXISTS `question` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `content` varchar(45) NOT NULL,
   `isapproved` tinyint(1) DEFAULT 0 NOT NULL,
-  `pcc_id` int(10) unsigned NOT NULL,
+  `psc_id` int(10) unsigned NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_question_pcc_id` FOREIGN KEY (`pcc_id`) REFERENCES `pcc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_question_psc_id` FOREIGN KEY (`psc_id`) REFERENCES `psc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -118,11 +117,11 @@ CREATE TABLE IF NOT EXISTS `answer` (
 
 CREATE TABLE IF NOT EXISTS `quiz` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pcc_id` int(10) unsigned NOT NULL,
+  `psc_id` int(10) unsigned NOT NULL,
   `title` varchar(45) NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_quiz_pcc_id` FOREIGN KEY (`pcc_id`) REFERENCES `pcc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_quiz_psc_id` FOREIGN KEY (`psc_id`) REFERENCES `psc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
