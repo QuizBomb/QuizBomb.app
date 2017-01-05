@@ -9,10 +9,8 @@
 		<org.springframework-version>4.3.5.RELEASE</org.springframework-version>
 		<org.hibernate-version>5.2.4.Final</org.hibernate-version>
 		<org.springframework.data-version>1.10.5.RELEASE</org.springframework.data-version>
-		<mysql-version>6.0.5</mysql-version>
-
+		<mysql-version>5.1.39</mysql-version>
 	</properties>
-
 	<dependencies>
 
 		<dependency>
@@ -61,7 +59,11 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${org.hibernate-version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-hikaricp</artifactId>
+			<version>${org.hibernate-version}</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
@@ -70,20 +72,12 @@
 			<version>${mysql-version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-hikaricp</artifactId>
-			<version>${org.hibernate-version}</version>
-		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
-		
-       <dependency>
-           <groupId>javax.servlet</groupId>
-           <artifactId>servlet-api</artifactId>
-           <version>3.0-alpha-1</version>
-       </dependency>
-
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0-alpha-1</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
 		<dependency>
@@ -92,16 +86,12 @@
 			<version>2.3.1</version>
 		</dependency>
 
-
-		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
 		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-
-
 
 		<!-- https://mvnrepository.com/artifact/javassist/javassist -->
 		<dependency>
@@ -110,9 +100,7 @@
 			<version>3.12.1.GA</version>
 		</dependency>
 
-
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
