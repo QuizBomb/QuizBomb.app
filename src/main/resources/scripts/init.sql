@@ -5,7 +5,7 @@ USE `quizbomb`;
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
   `fullName` varchar(45),
   `username` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 CREATE TABLE IF NOT EXISTS `professor` (
-  `id` int(10) unsigned NOT NULL,
+  `id` bigint(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `professor` (
 --
 
 CREATE TABLE IF NOT EXISTS `controller` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `controller` (
 --
 
 CREATE TABLE IF NOT EXISTS `sclass` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
   `value` varchar(45) NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS `sclass` (
 --
 
 CREATE TABLE IF NOT EXISTS `student` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `sclass_id` int(10) unsigned NOT NULL,
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
+  `sclass_id` bigint(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_student_sclass_id` FOREIGN KEY (`sclass_id`) REFERENCES `sclass` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `student` (
 --
 
 CREATE TABLE IF NOT EXISTS `course` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -71,10 +71,10 @@ CREATE TABLE IF NOT EXISTS `course` (
 --
 
 CREATE TABLE IF NOT EXISTS `psc` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `professor_id` int(10) unsigned NOT NULL,
-  `sclass_id` int(10) unsigned NOT NULL,
-  `course_id` int(10) unsigned NOT NULL,
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
+  `professor_id` bigint(10) unsigned NOT NULL,
+  `sclass_id` bigint(10) unsigned NOT NULL,
+  `course_id` bigint(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_psc_sclass_id` FOREIGN KEY (`sclass_id`) REFERENCES `sclass` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_psc_course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -87,10 +87,10 @@ CREATE TABLE IF NOT EXISTS `psc` (
 --
 
 CREATE TABLE IF NOT EXISTS `question` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
   `content` varchar(45) NOT NULL,
   `isapproved` tinyint(1) DEFAULT 0 NOT NULL,
-  `psc_id` int(10) unsigned NOT NULL,
+  `psc_id` bigint(10) unsigned NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_question_psc_id` FOREIGN KEY (`psc_id`) REFERENCES `psc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -102,10 +102,10 @@ CREATE TABLE IF NOT EXISTS `question` (
 --
 
 CREATE TABLE IF NOT EXISTS `answer` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
   `content` varchar(45) NOT NULL,
   `correct` tinyint(1) NOT NULL,
-  `question_id` int(10) unsigned NOT NULL,
+  `question_id` bigint(10) unsigned NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_answer_question_id` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -116,8 +116,8 @@ CREATE TABLE IF NOT EXISTS `answer` (
 --
 
 CREATE TABLE IF NOT EXISTS `quiz` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `psc_id` int(10) unsigned NOT NULL,
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
+  `psc_id` bigint(10) unsigned NOT NULL,
   `title` varchar(45) NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -129,8 +129,8 @@ CREATE TABLE IF NOT EXISTS `quiz` (
 --
 
 CREATE TABLE IF NOT EXISTS `quiz_question` (
-  `quiz_id` int(10) unsigned NOT NULL,
-  `question_id` int(10) unsigned NOT NULL,
+  `quiz_id` bigint(10) unsigned NOT NULL,
+  `question_id` bigint(10) unsigned NOT NULL,
   PRIMARY KEY (`quiz_id`,`question_id`),
   CONSTRAINT `fk_quiz_question_question_id` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_quiz_question_quiz_id` FOREIGN KEY (`quiz_id`) REFERENCES `quiz` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -141,9 +141,9 @@ CREATE TABLE IF NOT EXISTS `quiz_question` (
 --
 
 CREATE TABLE IF NOT EXISTS `score` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `quiz_id` int(10) unsigned NOT NULL,
-  `student_id` int(10) unsigned NOT NULL,
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
+  `quiz_id` bigint(10) unsigned NOT NULL,
+  `student_id` bigint(10) unsigned NOT NULL,
   `successrate` float NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
