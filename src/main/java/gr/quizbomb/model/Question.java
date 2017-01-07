@@ -4,18 +4,15 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import java.sql.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
+
 @Table(name ="question")
 
 public class Question {
@@ -24,7 +21,7 @@ public class Question {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
-	private int id;
+	private long id;
 	
 	@Column(name = "content")
 	private String text;
@@ -32,30 +29,33 @@ public class Question {
 	@Column(name = "isapproved",columnDefinition = "TINYINT")
 	private boolean approved ;
 	
-	@Column(name = "pcd_id",columnDefinition = "UNSIGNED INT(10)")
-	private int pcd ;
+	//@Column(name = "pcd_id",columnDefinition = "UNSIGNED INT(10)")
+	//private int pcd ;
 	
 	@Column(updatable = false)
 	private Date created_at;
 	
-	@OneToMany(mappedBy="question_id")
+	@OneToMany(mappedBy="question")
 	private  List<Answer> answer;
-	
-	public Question(int id,String text,int pcd )
-	{
-		this.id = id;
-		this.text = text;
-		this.approved = false;
-		this.pcd = pcd;
-		
 
+	public Question() {
+		super();
 	}
 
-	public int getId() {
+	public Question(String text, boolean approved, int pcd, Date created_at, List<Answer> answer) {
+		super();
+		this.text = text;
+		this.approved = approved;
+		//this.pcd = pcd;
+		this.created_at = created_at;
+		this.answer = answer;
+	}
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -74,7 +74,7 @@ public class Question {
 	public void setApproved(boolean approved) {
 		this.approved = approved;
 	}
-
+/**
 	public int getPcd() {
 		return pcd;
 	}
@@ -82,7 +82,7 @@ public class Question {
 	public void setPcd(int pcd) {
 		this.pcd = pcd;
 	}
-
+**/
 	public Date getCreated_at() {
 		return created_at;
 	}
@@ -90,13 +90,15 @@ public class Question {
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
-	
-	public List<Answer> getAnswerList() {
+
+	public List<Answer> getAnswer() {
 		return answer;
 	}
 
-	public void setAnswerList(List<Answer> ans) {
-		this.answer = ans;
+	public void setAnswer(List<Answer> answer) {
+		this.answer = answer;
 	}
+	
+	
 }
 	

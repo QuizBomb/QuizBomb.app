@@ -2,56 +2,50 @@ package gr.quizbomb.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
+
 @Table(name ="answer")
 public class Answer {
 	
+	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
-	private int id;
+	@Column(unique = true, nullable = false)
+	private long id;
 	
-	@Column(name = "content")
 	private String content;
 	
-	@Column(name = "correct", nullable = false, columnDefinition = "TINYINT(1)")
 	private boolean correct;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "question_id")
-	private int question_id;
-	
-	
+	private Question question;
 
-
-	public Answer(int id, String content, boolean correct, int question_id) {
+	public Answer() {
 		super();
-		this.id = id;
-		this.content = content;
-		this.correct = correct;
-		this.question_id = question_id;
-		
 	}
 
-	public int getId() {
+	
+	public Answer(String content, boolean correct, Question question) {
+		super();
+		this.content = content;
+		this.correct = correct;
+		this.question = question;
+	}
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -63,7 +57,7 @@ public class Answer {
 		this.content = content;
 	}
 
-	public boolean getCorrect() {
+	public boolean isCorrect() {
 		return correct;
 	}
 
@@ -71,14 +65,13 @@ public class Answer {
 		this.correct = correct;
 	}
 
-	public int getQuestion_id() {
-		return question_id;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public void setQuestion_id(int question_id) {
-		this.question_id = question_id;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
-
-	
+		
 	
 }
