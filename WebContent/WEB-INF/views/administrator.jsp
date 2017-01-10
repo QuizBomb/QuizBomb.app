@@ -31,14 +31,55 @@
 <c:if test="${!empty questionsList}">
 	<table class="tg">
 	<tr>
-	    <th width="80"> Question ID</th>
-		<th width="120">Text</th>
+	    <th width="70"> Question ID</th>
+		<th width="200">Text</th>
+		<th width="100">Answer1</th>
+		<th width="100">Answer2</th>
+		<th width="100">Answer3</th>
+		<th width="100">Answer4</th>
+		<th width="60">Delete</th>
+		<th width="60">Accept</th>
 	</tr>
-	<c:forEach items="${questionsList}" var="question">
+	<c:forEach items="${questionsList}" var="question" >
 		<tr>
-			<td><form><input type="checkbox" name="quest" value="quest" id="quest"></form></td>
+			<td>${question.id}</td>
 			<td>${question.text}</td>
-			<td>${question.answer}</td>				
+			 <c:choose>
+                <c:when test="${question.answer[0].correct==true}">
+                  <td style="color:green"><b>${question.answer[0].content}</b></td>
+               </c:when>
+			  <c:otherwise>
+                  <td style="color:red"><b>${question.answer[0].content}</b></td>
+               </c:otherwise>
+              </c:choose>
+
+			 <c:choose>
+                <c:when test="${question.answer[1].correct==true}">
+                  <td style="color:green"><b>${question.answer[1].content}</b></td>
+               </c:when>
+			  <c:otherwise>
+                  <td style="color:red"><b>${question.answer[1].content}</b></td>
+               </c:otherwise>
+              </c:choose>
+              
+              <c:choose>
+                <c:when test="${question.answer[2].correct==true}">
+                  <td style="color:green"><b>${question.answer[2].content}</b></td>
+               </c:when>
+			  <c:otherwise>
+                  <td style="color:red"><b>${question.answer[2].content}</b></td>
+               </c:otherwise>
+              </c:choose>
+              
+              <c:choose>
+                <c:when test="${question.answer[3].correct==true}">
+                  <td style="color:green"><b>${question.answer[3].content}</b></td>
+               </c:when>
+			  <c:otherwise>
+                  <td style="color:red"><b>${question.answer[3].content}</b></td>
+               </c:otherwise>
+              </c:choose>
+           
 			<td><input type="button"  onclick="location.href='questionRemove/${question.id}'" value="Remove Question" >
 			<td><input type="button"  onclick="location.href='questionApprove/${question.id}'" value="Accept" >
 		</tr>
