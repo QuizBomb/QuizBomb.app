@@ -21,8 +21,8 @@
 		<h3> Καλωσήρθατε, ${loggedUser.fullName}</h3>
 		<h4>Επιλέξτε μία από τις παρακάτω ενέργειες.</h4>
 		
-		<input type="button"  onclick="location.href='createQuestion'" value="Εισαγωγή Ερώτησης" >
-		<input type="button"  onclick="location.href=''" value="Δημιουργία Διαγωνίσματος" >
+		<input type="button" onclick="location.href='createQuestion'" value="Εισαγωγή Ερώτησης" >
+		<input type="button" onclick="location.href=''" value="Δημιουργία Διαγωνίσματος" >
 	</c:if>
 </body>
 </html>

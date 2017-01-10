@@ -90,10 +90,12 @@ CREATE TABLE IF NOT EXISTS `question` (
   `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
   `content` varchar(45) NOT NULL,
   `isapproved` tinyint(1) DEFAULT 0 NOT NULL,
-  `psc_id` bigint(10) unsigned NOT NULL,
+  `course_id` bigint(10) unsigned NOT NULL,
+  `sclass_id` bigint(10) unsigned NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_question_psc_id` FOREIGN KEY (`psc_id`) REFERENCES `psc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_question_course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_question_sclass_id` FOREIGN KEY (`sclass_id`) REFERENCES `sclass` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,14 +31,19 @@ public class Question {
 	@Column(name = "isapproved",columnDefinition = "TINYINT")
 	private boolean approved ;
 	
-	//@Column(name = "pcd_id",columnDefinition = "UNSIGNED INT(10)")
-	//private int pcd ;
-	
 	@Column(updatable = false)
 	private Date created_at;
 	
 	@OneToMany(mappedBy="question")
-	private  List<Answer> answer;
+	private List<Answer> answer;
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "course_id")
+	private Course course;
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "sclass_id")
+	private SClass sClass;
 
 	public Question() {
 		super();
@@ -46,7 +53,6 @@ public class Question {
 		super();
 		this.text = text;
 		this.approved = approved;
-		//this.pcd = pcd;
 		this.created_at = created_at;
 		this.answer = answer;
 	}
@@ -74,15 +80,7 @@ public class Question {
 	public void setApproved(boolean approved) {
 		this.approved = approved;
 	}
-/**
-	public int getPcd() {
-		return pcd;
-	}
-
-	public void setPcd(int pcd) {
-		this.pcd = pcd;
-	}
-**/
+	
 	public Date getCreated_at() {
 		return created_at;
 	}
@@ -98,7 +96,28 @@ public class Question {
 	public void setAnswer(List<Answer> answer) {
 		this.answer = answer;
 	}
-	
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public SClass getsClass() {
+		return sClass;
+	}
+
+	public void setsClass(SClass sClass) {
+		this.sClass = sClass;
+	}
+
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", text=" + text + ", approved=" + approved + ", created_at=" + created_at
+				+ ", answer=" + answer + ", course=" + course + ", sClass=" + sClass + "]";
+	}
 	
 }
 	
