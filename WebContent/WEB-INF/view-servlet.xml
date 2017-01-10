@@ -16,7 +16,7 @@
 	<mvc:annotation-driven/>
 	
 	<!-- Define the Path for the View Resources (ex css, js) -->
-	<mvc:resources mapping="/resources/**" location="/WEB-INF/view/resources/" />
+	<mvc:resources mapping="/resources/**" location="/WEB-INF/views/resources/" />
 	
 	<!-- Define the Path (suffix) and the Type (suffix) of a View   -->
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

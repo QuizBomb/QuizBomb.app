@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Αρχική Σελίδα</title>
+
+<link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>
 	<c:if test="${empty loggedUser}">
