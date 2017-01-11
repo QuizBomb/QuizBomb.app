@@ -2,7 +2,6 @@ package gr.quizbomb.repository;
 
 import java.util.List;
 
-
 import gr.quizbomb.model.Question;
 
 public interface QuestionDAO extends GenericRepository<Question>{
