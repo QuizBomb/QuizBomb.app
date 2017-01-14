@@ -32,6 +32,11 @@ public abstract class User {
 	
 	@Column(updatable = false)
 	private Date created_at;
+	
+	public String getRole(){
+		
+		return "";
+	}
 
 	public Long getId() {
 		return id;
