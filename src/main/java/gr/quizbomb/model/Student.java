@@ -12,6 +12,11 @@ public class Student extends User {
 	@ManyToOne(optional = false)
     @JoinColumn(name="sclass_id")
 	private SClass sClass;
+	
+	public String getRole(){
+		
+		return "student";
+	}
 
 	public SClass getsClass() {
 		return sClass;

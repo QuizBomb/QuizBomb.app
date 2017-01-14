@@ -27,20 +27,14 @@ public class ProfessorUserController {
 	@RequestMapping(value = "/professor", method = RequestMethod.GET)
 	public String getProfessorHomePage(HttpSession session, Model model) {
 		
-		Professor tempProfessor = professorService.findById(1);
 		
-		session.setAttribute("loggedUser", tempProfessor);
-				
+								
 		return "professor";
 	}	
 	
 	@RequestMapping(value = "/createQuestion", method = RequestMethod.GET)
 	public String getCreateQuestionPage(HttpSession session, Model model) {
-		
-		Professor tempProfessor = professorService.findById(1);
-		
-		session.setAttribute("loggedUser", tempProfessor);
-		
+						
 		Question question = new Question();
 		List<Answer> answers = new ArrayList<Answer>(4);
 		

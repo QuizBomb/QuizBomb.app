@@ -7,4 +7,9 @@ import javax.persistence.Table;
 @Table(name = "controller")
 public class Controller extends User {
 	
+	public String getRole(){
+		
+		return "controller";
+	}
+	
 }
