@@ -1,11 +1,77 @@
-body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+*{
+	margin:0;
+	padding:0;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  height:100%;
+  overflow-x:hidden;
+  padding-top: 51px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 .img-center {
 	margin: 0 auto;
 }
 
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px; 
+}
+
+.wrapper:after {
+  content: "";
+  display: block;
+}
+
 footer {
-    margin: 50px 0;
+	background-color: rgba(31, 70, 76, 0.37);	
+}
+
+footer, .wrapper:after {
+  height: 50px;
+}
+
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+		.tg .tg-4eph{background-color:#f9f9f9}
+		
+select {
+	border-radius: 4px;
+}
+
+nav {
+	margin-bottom : 0!important;	
+}
+
+.welcome {
+	width: 100%;
+	min-height: 450px;
+	background: url('../img/reading.jpg') center center;
+	background-size: cover;
+	opacity: 1;
+	display: table;
+	width: 100%;
+	position: relative;
+	border-radius: 0px;
+	color: white;
+	text-transform: uppercase;
+	margin: 0;
+	-webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% 85%);
+  clip-path: url(#poly);
+	overflow: hidden;
+  
+}
+.welcome h1 {
+	font-size: 50px;
+}
+.welcome h2 {
+	font-size: 18px;
+	margin: 0;
 }
