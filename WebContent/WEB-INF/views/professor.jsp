@@ -82,8 +82,8 @@
 				Εισαγωγή Ερώτησης</button>
 
 			<button type="button" class="btn btn-info" aria-haspopup="true"
-				aria-expanded="false" onclick="location.href=''">
-				Δημιουργία Ερώτησης</button>
+				aria-expanded="false" onclick="location.href='createQuiz'">
+				Δημιουργία Διαγωνίσματος</button>
 
 		</c:if>
 
