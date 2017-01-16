@@ -58,6 +58,15 @@ public class QuestionServiceImpl extends GenericServiceImpl<Question> implements
 		}
 		
 	}
+	
+	@Override
+	public List<Question> getLoadQuestions(Long sClassId, Long courseId) {
+		
+		//return questionDao.loadQuestions(sClassId, courseId);
+		return questionDao.findBySClassIdAndCourseId(sClassId, courseId);
+		
+		
+	}
 
 	
 }
