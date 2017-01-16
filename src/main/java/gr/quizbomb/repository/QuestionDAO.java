@@ -8,7 +8,7 @@ public interface QuestionDAO extends GenericRepository<Question>{
 
 	public List<Question> findByApproved(boolean b);
 	
-    public List<Question> findBySClassIdAndCourseId(Long s, Long c);
+    public List<Question> findBySClassIdAndCourseIdAndApproved(Long s, Long c, boolean a);
 	
 	
 	/** 
