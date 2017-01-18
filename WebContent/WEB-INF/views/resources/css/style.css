@@ -22,6 +22,7 @@ html, body {
 .wrapper {
   min-height: 100%;
   margin-bottom: -50px; 
+  padding-bottom: 20px;
 }
 
 .wrapper:after {
@@ -74,4 +75,8 @@ nav {
 .welcome h2 {
 	font-size: 18px;
 	margin: 0;
+}
+
+textarea {
+    resize: none;
 }

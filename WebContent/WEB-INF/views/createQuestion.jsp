@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	
-	<title>Αρχική Σελίδα</title>
+	<title>Εισαγωγή Ερώτησης</title>
 
 	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 	<link rel="stylesheet" href="resources/css/style.css">
@@ -22,16 +22,6 @@
 
 </head>
 
-
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Εισαγωγή Ερώτησης</title>
-
-<link rel="stylesheet" href="resources/css/style.css">
-
-<script type="text/javascript" src="resources/js/jquery-3.1.1.min.js"></script>
-</head>
 <body>
 	
 	<!-- Navigation -->
@@ -45,13 +35,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">QuizBomb</a>
+                <a class="navbar-brand" href="/QuizBomb/">QuizBomb</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="professor">Επιστροφή</a>
                     </li>
                 </ul>
                  <ul class="nav navbar-nav navbar-right">
@@ -84,66 +74,69 @@
 		<div class="wrapper container">
 			<h4>Συμπληρώστε τη νέα ερώτηση:</h4>
 			
-			<form:form action="addQuestion" commandName="question" class="form-inline">
-			
-				<div class="form-group">
-					<label>Ερώτηση:</label>
-					<form:textarea rows="3" cols="30" path="text" type="text" class="form-control" placeholder="Εισάγετε την ερώτηση"/>
-				</div>
+			<form:form action="addQuestion" commandName="question" class="form-inline" id="form">
+				
 				<br>
-				<p>
 				<div class="form-group">
-					<select onchange="setCourseId();" id="classCourse">
+					<select onchange="setCourseId();" id="classCourse" name="classCourse">
 						<option value="0 | 0" selected>Επιλέξτε το Μάθημα</option>
 					    <c:forEach items="${loggedUser.classCourse}" var="classCourse">
 					        <option value="${classCourse.course.id}|${classCourse.sClass.id} " >${classCourse.course.name} (${classCourse.sClass.value})</option>
 					    </c:forEach>
 					</select>
-					
-			
-					
-					<input type="hidden" name="sClassId" id="sClass"/>
-					
-					<input type="hidden" name="courseId" id="course"/>
-					
-					<script type="text/javascript">
-						function setCourseId(){
-							 var selectBox = document.getElementById("classCourse");
-							 var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-							 var values = selectBox.options[selectBox.selectedIndex].value.split('|');
-
-							 document.getElementById("sClass").value= values[1];
-							 document.getElementById("course").value= values[0];
-						}
-					</script>
-				</div>	
-				</p>
-				<br>
+				</div>
 				
+				<br>
+				<br>
+				<div class="form-group">
+					<label>Ερώτηση:</label>
+					<form:textarea rows="3" cols="30" path="text" type="text" class="form-control" placeholder="Εισάγετε την ερώτηση" name="text"/>
+				</div>
+				<br>
+					
+				<input type="hidden" name="sClassId" id="sClass"/>
+					
+				<input type="hidden" name="courseId" id="course"/>
+					
+				<script type="text/javascript">
+					function setCourseId(){
+						 var selectBox = document.getElementById("classCourse");
+						 var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+						 var values = selectBox.options[selectBox.selectedIndex].value.split('|');
+
+						 document.getElementById("sClass").value= values[1];
+						 document.getElementById("course").value= values[0];
+					}
+				</script>
+			
+				<br>
 				<div class="form-group">
 					<label>Απάντηση 1:</label>
-					<form:input path="answer[0].content" type="text" class="form-control" placeholder="Εισάγετε την πρώτη επιλογή"/>
-					<input type="checkbox" name="answer[0].correct" class="form-control" value="true"/>
+					<form:input path="answer[0].content" type="text" class="form-control" placeholder="Εισάγετε την πρώτη επιλογή" id="answer1"/>
+					Σωστή: <input type="checkbox" name="answer[0].correct" class="form-control" value="true"/>
 				</div>
-				<p>
+				
+				<br>
 				<div class="form-group">
 					<label>Απάντηση 2:</label>
-					<form:input path="answer[1].content" type="text" class="form-control" placeholder="Εισάγετε την δεύυτερη επιλογή"/>
-					<input type="checkbox" name="answer[1].correct" class="form-control" value="true"/>
+					<form:input path="answer[1].content" type="text" class="form-control" placeholder="Εισάγετε την δεύυτερη επιλογή" id="answer2"/>
+					Σωστή: <input type="checkbox" name="answer[1].correct" class="form-control" value="true"/>
 				</div>
-				</p>
+				
+				<br>
 				<div class="form-group">
 					<label>Απάντηση 3:</label>
-					<form:input path="answer[2].content" type="text" class="form-control" placeholder="Εισάγετε την τρίτη επιλογή"/>
-					<input type="checkbox" name="answer[2].correct" class="form-control" value="true"/>
+					<form:input path="answer[2].content" type="text" class="form-control" placeholder="Εισάγετε την τρίτη επιλογή" id="answer3"/>
+					Σωστή: <input type="checkbox" name="answer[2].correct" class="form-control" value="true"/>
 				</div>
-				<p>
+				
+				<br>
 				<div class="form-group">
 					<label>Απάντηση 4:</label>
-					<form:input path="answer[3].content" type="text" class="form-control" placeholder="Εισάγετε την τέταρτη επιλογή"/>
-					<input type="checkbox" name="answer[3].correct" class="form-control" value="true"/>
+					<form:input path="answer[3].content" type="text" class="form-control" placeholder="Εισάγετε την τέταρτη επιλογή" id="answer4"/>
+					Σωστή: <input type="checkbox" name="answer[3].correct" class="form-control" value="true"/>
 				</div>
-				</p>
+				
 				<script type="text/javascript">
 					$('input[type="checkbox"]').on('change', function() {
 						 $('input[type="checkbox"]').not(this).prop('checked', false);
@@ -152,7 +145,34 @@
 				 
 				<br>
 				<br>
-				<button type="submit" class="btn btn-submit">Καταχώρηση</button>
+				
+				
+				<button type="button" class="btn btn-info" id="submitButton">Καταχώρηση</button>
+				<script type="text/javascript">
+				
+					var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+					
+					$('#submitButton').click(function(){
+						
+					 	if (classCourse.value === "0 | 0")
+					 		alert("Επιλέξτε ένα μάθημα");
+					 	else if (text.value === "")
+					 		alert("Σημπληρώστε την ερώτηση");
+					 	else if (document.getElementById('answer1').value === "")
+					 		alert("Σημπληρώστε την πρώτη απάντηση");
+					 	else if (document.getElementById('answer2').value === "")
+					 		alert("Σημπληρώστε τη δεύτερη απάντηση");
+					 	else if (document.getElementById('answer3').value === "")
+					 		alert("Σημπληρώστε τη τρίτη απάντηση");
+					 	else if (document.getElementById('answer4').value === "")
+					 		alert("Σημπληρώστε τη τέταρτη απάντηση");
+					 	else if (Array.prototype.slice.call(checkboxes).some(x => x.checked) == false)
+					 		alert("Πρέπει να επιλέξετε μία σωστή απάντηση");
+					 	else
+					 		document.getElementById('form').submit();
+
+					});
+				</script>
 			</form:form>
 		</div>
 		
