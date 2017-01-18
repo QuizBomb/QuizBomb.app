@@ -23,6 +23,8 @@ public class QuestionController {
 		
 		questionService.createNewQuestion(question, sClassId, courseId);
 		
+		session.setAttribute("questionAddedSuccessfully", true);
+		
 		return "redirect:/professor";
 	}	
 }

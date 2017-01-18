@@ -36,15 +36,12 @@
 			</button>
 
 
-			<a class="navbar-brand" href="#">QuizBomb</a>
+			<a class="navbar-brand" href="/QuizBomb/">QuizBomb</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="#">About</a></li>
-			</ul>
-
+			
 			<ul class="nav navbar-nav navbar-right">
 
 				<li class="dropdown"><a href="" class="dropdown-toggle"
@@ -75,6 +72,15 @@
 		</c:if>
 
 		<c:if test="${!empty loggedUser}">
+		
+			<c:if test="${questionAddedSuccessfully}">
+				<div class="alert alert-warning alert-dismissible" role="alert" >
+		  			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  			Η ερώτηση υποβλήθηκε προς έγγκριση.
+				</div>
+				 <c:remove var="questionAddedSuccessfully"/>
+			</c:if>
+					
 			<h4>Επιλέξτε μία από τις παρακάτω ενέργειες.</h4>
 
 			<button type="button" class="btn btn-info" aria-haspopup="true"
