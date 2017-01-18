@@ -13,13 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import gr.quizbomb.model.Answer;
-import gr.quizbomb.model.Professor;
 import gr.quizbomb.model.Question;
-import gr.quizbomb.model.helper.CreateQuiz;
+import gr.quizbomb.model.Quiz;
 import gr.quizbomb.model.helper.CreateQuizSimpler;
-import gr.quizbomb.model.helper.QuestionForQuiz;
 import gr.quizbomb.model.helper.QuestionForQuizSimpler;
-import gr.quizbomb.service.ProfessorService;
 import gr.quizbomb.service.QuestionService;
 
 @Controller
@@ -28,8 +25,6 @@ public class ProfessorUserController {
  @Autowired
  private QuestionService questionService;
  
- @Autowired
- private ProfessorService professorService;
  
  /* This method will be implemented after a successful professor log in
   */
@@ -69,30 +64,26 @@ public class ProfessorUserController {
 		model.addAttribute("sClassId", sClassId);
 		model.addAttribute("courseId", courseId);
 		
-		//CreateQuiz quiz = new CreateQuiz();
+		Quiz quiz = new Quiz();
 		
 		CreateQuizSimpler quiz2 = new CreateQuizSimpler();
 				
 		List<Question> questions = questionService.getLoadQuestions(sClassId, courseId);
 		
-		//List<QuestionForQuiz> listQuestions = new ArrayList<QuestionForQuiz>();
-		
-		List<QuestionForQuizSimpler> listQuestions2 = new ArrayList<QuestionForQuizSimpler>();
+		List<QuestionForQuizSimpler> listQuestions = new ArrayList<QuestionForQuizSimpler>();
 	
 		
 		for (Question temp : questions) {
-		    
-			//listQuestions.add(new QuestionForQuiz(temp));
 			
-			listQuestions2.add(new QuestionForQuizSimpler(false, temp.getId(), temp.getText()));
+			listQuestions.add(new QuestionForQuizSimpler(false, temp.getId(), temp.getText()));
 
 		}
 		
-		//quiz.setQuestions(listQuestions);
+		quiz.setQuestions(questions);
 		
-		quiz2.setQuestions(listQuestions2);
+		quiz2.setQuestions(listQuestions);
 		
-		//model.addAttribute("quiz", quiz);
+		model.addAttribute("quiz", quiz);
 		model.addAttribute("quiz2", quiz2);
 		//session.setAttribute("quiz", quiz);
 				
