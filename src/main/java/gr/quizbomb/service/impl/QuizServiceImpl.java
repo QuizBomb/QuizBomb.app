@@ -10,6 +10,7 @@ import gr.quizbomb.model.Quiz;
 import gr.quizbomb.model.SClass;
 import gr.quizbomb.model.helper.CreateQuizSimpler;
 import gr.quizbomb.model.helper.QuestionForQuizSimpler;
+import gr.quizbomb.repository.QuizDAO;
 import gr.quizbomb.service.CourseService;
 import gr.quizbomb.service.QuestionService;
 import gr.quizbomb.service.QuizService;
@@ -21,8 +22,10 @@ import java.util.List;
 @Service
 @Transactional
 public class QuizServiceImpl extends GenericServiceImpl<Quiz> implements QuizService{
-
 	
+	@Autowired
+	private QuizDAO quizDAO;
+
 	@Autowired
 	private SClassService sClassService;
 	
@@ -62,5 +65,10 @@ public class QuizServiceImpl extends GenericServiceImpl<Quiz> implements QuizSer
 		newQuiz.setQuestions(selectedQuestions);
 		
 		this.create(newQuiz);
-	}	
+	}
+	
+	public List<Quiz> getQuizes(SClass s){
+		
+		return quizDAO.findBySClass(s);
+	}
 }
