@@ -4,81 +4,152 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+	<title>Προβολή Ερωτήσεων</title>
 
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="resources/css/style.css">
 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<h1>
-	Questions
-</h1>
+	<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/QuizBomb/">QuizBomb</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                
+                 <ul class="nav navbar-nav navbar-right">
+                
+                	<li class="dropdown">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown"  aria-expanded="false"><i class="icon-star"></i> Καλωσήρθατε, ${loggedUser.fullName} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+							<a href="logout"><i class="icon-pencil fa-fw"></i> Αποσύνδεση</a>
+							</li>
+						</ul>
+					</li>
 
-<br>
-<h3>Question List</h3>
-<c:if test="${empty questionsList}">
-<p>page is empty</p>
-</c:if>
-<c:if test="${!empty questionsList}">
-	<table class="tg">
-	<tr>
-	    <th width="70"> Question ID</th>
-		<th width="200">Text</th>
-		<th width="100">Answer1</th>
-		<th width="100">Answer2</th>
-		<th width="100">Answer3</th>
-		<th width="100">Answer4</th>
-		<th width="60">Delete</th>
-		<th width="60">Accept</th>
-	</tr>
-	<c:forEach items="${questionsList}" var="question" >
-		<tr>
-			<td>${question.id}</td>
-			<td>${question.text}</td>
-			 <c:choose>
-                <c:when test="${question.answer[0].correct==true}">
-                  <td style="color:green"><b>${question.answer[0].content}</b></td>
-               </c:when>
-			  <c:otherwise>
-                  <td style="color:red"><b>${question.answer[0].content}</b></td>
-               </c:otherwise>
-              </c:choose>
-
-			 <c:choose>
-                <c:when test="${question.answer[1].correct==true}">
-                  <td style="color:green"><b>${question.answer[1].content}</b></td>
-               </c:when>
-			  <c:otherwise>
-                  <td style="color:red"><b>${question.answer[1].content}</b></td>
-               </c:otherwise>
-              </c:choose>
-              
-              <c:choose>
-                <c:when test="${question.answer[2].correct==true}">
-                  <td style="color:green"><b>${question.answer[2].content}</b></td>
-               </c:when>
-			  <c:otherwise>
-                  <td style="color:red"><b>${question.answer[2].content}</b></td>
-               </c:otherwise>
-              </c:choose>
-              
-              <c:choose>
-                <c:when test="${question.answer[3].correct==true}">
-                  <td style="color:green"><b>${question.answer[3].content}</b></td>
-               </c:when>
-			  <c:otherwise>
-                  <td style="color:red"><b>${question.answer[3].content}</b></td>
-               </c:otherwise>
-              </c:choose>
-           
-			<td><input type="button"  onclick="location.href='questionRemove/${question.id}'" value="Remove Question" >
-			<td><input type="button"  onclick="location.href='questionApprove/${question.id}'" value="Accept" >
-		</tr>
-	</c:forEach>
-	</table>
-</c:if>
-
+				</ul>    
+                
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+	
+	<c:if test="${empty loggedUser}">
+	
+		<c:redirect url="login"/>
+	
+	</c:if>
+	
+	<c:if test="${!empty loggedUser}">
+	
+		<div class="wrapper container">
+		
+			<c:if test="${empty questionsList}">
+				<h4>Δεν υπάρχουν ερωτήσεις προς έγγκριση</h4>
+			</c:if>
+			
+			<c:if test="${!empty questionsList}">
+				<h4>Υπάρχουν οι εξής ερωτήσεις προς έγγκριση:</h4>
+				<h6>*Οι σωστές απαντήσεις εμφανίζονται με πράσινο χρώμα</h6>
+				<table class="tg">
+				<tr>
+				    <th>Id</th>
+					<th width="100">Ερώτηση</th>
+					<th width="100">Απάντηση 1</th>
+					<th width="100">Απάντηση 2</th>
+					<th width="100">Απάντηση 3</th>
+					<th width="100">Απάντηση 4</th>
+					<th>Ενέργειες</th>
+				</tr>
+				<c:forEach items="${questionsList}" var="question" >
+					<tr>
+						<td>${question.id}</td>
+						<td>${question.text}</td>
+						 <c:choose>
+			                <c:when test="${question.answer[0].correct==true}">
+			                  <td style="background-color:green"><b>${question.answer[0].content}</b></td>
+			               </c:when>
+						  <c:otherwise>
+			                  <td>${question.answer[0].content}</td>
+			               </c:otherwise>
+			              </c:choose>
+			
+						 <c:choose>
+			                <c:when test="${question.answer[1].correct==true}">
+			                  <td style="color:green"><b>${question.answer[1].content}</b></td>
+			               </c:when>
+						  <c:otherwise>
+			                  <td>${question.answer[1].content}</td>
+			               </c:otherwise>
+			              </c:choose>
+			              
+			              <c:choose>
+			                <c:when test="${question.answer[2].correct==true}">
+			                  <td style="color:green"><b>${question.answer[2].content}</b></td>
+			               </c:when>
+						  <c:otherwise>
+			                  <td>${question.answer[2].content}</td>
+			               </c:otherwise>
+			              </c:choose>
+			              
+			              <c:choose>
+			                <c:when test="${question.answer[3].correct==true}">
+			                  <td style="color:green"><b>${question.answer[3].content}</b></td>
+			               </c:when>
+						  <c:otherwise>
+			                  <td>${question.answer[3].content}</td>
+			               </c:otherwise>
+			              </c:choose>
+			           	
+			           	<td>
+			           	
+			           		<form style="display:inline;">
+								<input type="button" class="btn btn-info" onclick="location.href='questionApprove/${question.id}'" value="Αποδοχή" >
+								<input type="button" class="btn btn-danger" onclick="location.href='questionRemove/${question.id}'" value="Απόρριψη" >
+							</form>
+			           		
+			           	</td>
+						
+					</tr>
+				</c:forEach>
+				</table>
+			</c:if>
+		
+		</div>
+	
+	</c:if>
+	
+	<!-- Footer -->
+    <footer>
+    	<div class="row">
+    		<div class="col-lg-12">
+    			<p><center> Copyright &copy; QuizBomb 2017</font></center></p>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </footer>
 
 </body>
 </html>
