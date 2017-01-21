@@ -33,6 +33,14 @@ public abstract class User {
 	@Column(updatable = false)
 	private Date created_at;
 	
+	public User(String fullName, String username, String email, String password) {
+		super();
+		this.fullName = fullName;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
+
 	public String getRole(){
 		
 		return "";
