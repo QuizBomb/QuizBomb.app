@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="${contextPath}/professor">Επιστροφή</a>
                     </li>
                 </ul>
                  <ul class="nav navbar-nav navbar-right">
@@ -71,7 +71,7 @@
 	   <div class="wrapper container-fluid">
       	  <div class="row">
 			
-			<div class="jumbotron">
+			<div class="col-md-10 col-md-push-1">
 				<h4>Δημιουργήστε ένα νέο διαγώνισμα:</h4>
 				
 				<form:form action="${contextPath}/addQuiz" commandName="quiz2" class="form-inline">
