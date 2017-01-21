@@ -80,3 +80,21 @@ nav {
 textarea {
     resize: none;
 }
+.login {
+	width: 100%;
+	min-height: 450px;
+	background: url('../img/luck1.jpg') center center;
+	background-size: cover;
+	opacity: 1;
+	display: table;
+	width: 100%;
+	position: relative;
+	border-radius: 0px;
+	color: #408080;
+	text-transform: uppercase;
+	margin: 0;
+	-webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% 85%);
+  clip-path: url(#poly);
+	overflow: hidden;
+  
+}
