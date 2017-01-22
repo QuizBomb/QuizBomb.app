@@ -33,14 +33,10 @@ INSERT INTO `quizbomb`.`user` (`fullName`, `username`, `email`, `password`) VALU
 
 INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('1');
 INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('2');
-INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('4');
-INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('6');
-INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('7');
 INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('10');
-INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('12');
 INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('3');
-INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('5');
-INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('8');
+INSERT INTO `quizbomb`.`professor` (`id`) VALUES ('6');
+
 
 INSERT INTO `quizbomb`.`sclass` (`value`) VALUES ('A');
 INSERT INTO `quizbomb`.`sclass` (`value`) VALUES ('B');
@@ -67,19 +63,19 @@ INSERT INTO `quizbomb`.`student` (`id`, `sclass_id`) VALUES ('27', '2');
 INSERT INTO `quizbomb`.`student` (`id`, `sclass_id`) VALUES ('28', '3');
 INSERT INTO `quizbomb`.`student` (`id`, `sclass_id`) VALUES ('29', '3');
 INSERT INTO `quizbomb`.`student` (`id`, `sclass_id`) VALUES ('30', '1');
+INSERT INTO `quizbomb`.`student` (`id`, `sclass_id`) VALUES ('4', '1');
+INSERT INTO `quizbomb`.`student` (`id`, `sclass_id`) VALUES ('5', '2');
+INSERT INTO `quizbomb`.`student` (`id`, `sclass_id`) VALUES ('7', '3');
+INSERT INTO `quizbomb`.`student` (`id`, `sclass_id`) VALUES ('8', '1');
+INSERT INTO `quizbomb`.`student` (`id`, `sclass_id`) VALUES ('12', '3');
 
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Mathimatika');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Fysiki');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Ximeia');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Arxaia');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Istoria');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Keimena');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Geometria');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Ekthesi');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Pliroforiki');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Texnologia');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Koinoniki Agogi');
-INSERT INTO `quizbomb`.`course` (`name`) VALUES ('Viologia');
+
+INSERT INTO `quizbomb`.`course` (`name`) VALUES (N'Μαθηματικά');
+INSERT INTO `quizbomb`.`course` (`name`) VALUES (N'Φυσική');
+INSERT INTO `quizbomb`.`course` (`name`) VALUES (N'Χημεία');
+INSERT INTO `quizbomb`.`course` (`name`) VALUES (N'Ιστορία');
+INSERT INTO `quizbomb`.`course` (`name`) VALUES (N'Πληροφορική');
+INSERT INTO `quizbomb`.`course` (`name`) VALUES (N'Βιολογία');
 
 INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('1', '1', '1');
 INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('1', '2', '1');
@@ -90,31 +86,14 @@ INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES (
 INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('3', '1', '3');
 INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('3', '2', '3');
 INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('3', '3', '3');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('4', '1', '4');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('4', '2', '4');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('4', '3', '4');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('5', '1', '5');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('5', '2', '5');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('5', '3', '5');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('6', '1', '6');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('6', '2', '6');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('6', '3', '6');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('7', '1', '7');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('7', '2', '7');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('7', '3', '7');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('8', '1', '8');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('8', '2', '8');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('8', '3', '8');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('10', '1', '9');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('10', '2', '9');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('10', '3', '9');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('12', '1', '10');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('12', '2', '10');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('12', '3', '10');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('4', '1', '11');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('4', '2', '11');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('4', '3', '11');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('6', '1', '12');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('6', '2', '12');
-INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('6', '3', '12');
+INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('10', '1', '4');
+INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('10', '2', '4');
+INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('10', '3', '4');
+INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('6', '1', '5');
+INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('6', '2', '5');
+INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('6', '3', '5');
+INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('10', '1', '6');
+INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('10', '2', '6');
+INSERT INTO `quizbomb`.`psc` (`professor_id`, `sclass_id`, `course_id`) VALUES ('10', '3', '6');
+
 
