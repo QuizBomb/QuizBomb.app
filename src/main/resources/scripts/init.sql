@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `psc` (
 
 CREATE TABLE IF NOT EXISTS `question` (
   `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(45) NOT NULL,
+  `content` text NOT NULL,
   `isapproved` tinyint(1) DEFAULT 0 NOT NULL,
   `course_id` bigint(10) unsigned NOT NULL,
   `sclass_id` bigint(10) unsigned NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `question` (
 
 CREATE TABLE IF NOT EXISTS `answer` (
   `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(45) NOT NULL,
+  `content` text NOT NULL,
   `correct` tinyint(1) NOT NULL,
   `question_id` bigint(10) unsigned NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
@@ -119,11 +119,13 @@ CREATE TABLE IF NOT EXISTS `answer` (
 
 CREATE TABLE IF NOT EXISTS `quiz` (
   `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
-  `psc_id` bigint(10) unsigned NOT NULL,
+  `course_id` bigint(10) unsigned NOT NULL,
+  `sclass_id` bigint(10) unsigned NOT NULL,
   `title` varchar(45) NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_quiz_psc_id` FOREIGN KEY (`psc_id`) REFERENCES `psc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_quiz_course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_quiz_sclass_id` FOREIGN KEY (`sclass_id`) REFERENCES `sclass` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
