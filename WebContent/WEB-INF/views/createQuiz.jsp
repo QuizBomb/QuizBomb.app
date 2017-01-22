@@ -46,7 +46,7 @@
 						<a href="" class="dropdown-toggle" data-toggle="dropdown"  aria-expanded="false"><i class="icon-star"></i> Καλωσήρθατε, ${loggedUser.fullName} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
-							<a href="logout"><i class="icon-pencil fa-fw"></i> Αποσύνδεση</a>
+							<a href="${contextPath}/logout"><i class="icon-pencil fa-fw"></i> Αποσύνδεση</a>
 							</li>
 						</ul>
 					</li>
