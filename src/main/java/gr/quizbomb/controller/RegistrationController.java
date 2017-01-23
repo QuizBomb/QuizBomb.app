@@ -37,8 +37,6 @@ public class RegistrationController {
 		Student newStudent = new Student(student.getFullName(), student.getUsername(), student.getEmail(), student.getPassword(), sClassService.findById(student.getsClassId()));
 		newStudent = studentService.create(newStudent);
 		
-		session.setAttribute("loggedUser", newStudent);
-		
-		return "redirect:/student";	
+		return "redirect:/login";	
 	}
 }
