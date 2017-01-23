@@ -31,8 +31,8 @@ public class Score {
 	
 	private float successrate;
 	
-	@Column(updatable = false)
-	private Date created_at;
+	@Column(name="created_at", updatable = false)
+	private Date createdAt;
 
 	public Long getId() {
 		return id;
@@ -65,13 +65,13 @@ public class Score {
 	public void setSuccessRate(float successrate) {
 		this.successrate = successrate;
 	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 	
-	public Date getCreated_at() {
-		return created_at;
-	}
-
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
-	}
-
 }
