@@ -17,6 +17,10 @@ public class Professor extends User {
 	@OneToMany(mappedBy="professor", fetch = FetchType.EAGER) 
 	public List<PSC> classCourse;
 	
+	public Professor() {
+		super();
+	}
+
 	public Professor(String fullName, String username, String email, String password) {
 		super(fullName, username, email, password);
 	}

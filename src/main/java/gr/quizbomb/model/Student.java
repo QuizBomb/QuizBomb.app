@@ -22,7 +22,10 @@ public class Student extends User {
 	@OneToMany(mappedBy="student")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Score> score;
-	
+
+	public Student() {
+		super();
+	}
 
 	public Student(String fullName, String username, String email, String password, SClass sClass) {
 		super(fullName, username, email, password);

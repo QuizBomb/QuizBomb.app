@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `quizbomb`;
+CREATE DATABASE  IF NOT EXISTS `quizbomb` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 USE `quizbomb`;
 --
 -- Table structure for table `user`

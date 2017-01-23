@@ -1,7 +1,5 @@
 package gr.quizbomb.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,12 +24,6 @@ public class GenericServiceImpl<T> implements GenericService<T> {
 		T deletedT = dao.findOne(id);
 		dao.delete(deletedT);
 		return deletedT;
-	}
-
-	@Override
-	@Transactional
-	public List<T> findAll() {
-		return dao.findAll();
 	}
 
 	@Override

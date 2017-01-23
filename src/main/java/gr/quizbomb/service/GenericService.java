@@ -1,7 +1,5 @@
 package gr.quizbomb.service;
 
-import java.util.List;
-
 public interface GenericService<T> {
 	
 	public T create(T t);
@@ -11,7 +9,5 @@ public interface GenericService<T> {
 	public T update(T t);
 	
 	public T delete(long id);
-	
-	public List<T> findAll();
-	
+		
 }
