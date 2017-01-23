@@ -12,6 +12,10 @@ public class Controller extends User {
 		return "controller";
 	}
 	
+	public Controller() {
+		super();
+	}
+
 	public Controller(String fullName, String username, String email, String password) {
 		super(fullName, username, email, password);
 	}
