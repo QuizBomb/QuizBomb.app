@@ -58,6 +58,12 @@ public class Question {
 		this.answer = answer;
 	}
 
+	public Question(long id2, List<Answer> answerList) {
+		super();
+		this.id = id2;
+		this.answer = answerList;
+	}
+
 	public long getId() {
 		return id;
 	}

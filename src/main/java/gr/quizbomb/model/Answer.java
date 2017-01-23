@@ -32,14 +32,27 @@ public class Answer {
 	public Answer() {
 		super();
 	}
-
 	
+	public Answer(long id, boolean correct) {
+		super();
+		this.id = id;
+		this.correct = correct;
+	}
+
+
+
 	public Answer(String content, boolean correct, Question question) {
 		super();
 		this.content = content;
 		this.correct = correct;
 		this.question = question;
 	}
+
+	public Answer(long id) {
+		super();
+		this.id = id;
+	}
+
 
 	public long getId() {
 		return id;
