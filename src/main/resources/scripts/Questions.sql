@@ -755,3 +755,42 @@ INSERT INTO `quizbomb`.`answer` (`content`, `correct`, `question_id`) VALUES (N'
 INSERT INTO `quizbomb`.`answer` (`content`, `correct`, `question_id`) VALUES (N'Να παιχθεί από μικρές ηλικίες.', '0', '138');
 INSERT INTO `quizbomb`.`answer` (`content`, `correct`, `question_id`) VALUES (N'Να επιδιωχθεί με πείσμα η νίκη.', '0', '138');
 INSERT INTO `quizbomb`.`answer` (`content`, `correct`, `question_id`) VALUES (N'Το α και το γ.', '1', '138');
+
+ALTER TABLE `quizbomb`.`quiz` 
+CHANGE COLUMN `title` `title` VARCHAR(150) NOT NULL ;
+
+
+INSERT INTO `quizbomb`.`quiz` (`course_id`, `sclass_id`, `title`) VALUES ('2', '2', N'Φυσική - Τεστ ερωτήσεων πολλαπλής επιλογής -  Β΄ Γυμνασίου');
+INSERT INTO `quizbomb`.`quiz` (`course_id`, `sclass_id`, `title`) VALUES ('3', '1', N'Χημεία - Τεστ ερωτήσεων πολλαπλής επιλογής -  Α΄ Γυμνασίου');
+INSERT INTO `quizbomb`.`quiz` (`course_id`, `sclass_id`, `title`) VALUES ('2', '3', N'Φυσική - Τεστ ερωτήσεων πολλαπλής επιλογής -  Γ΄ Γυμνασίου');
+
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('1', '12');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('1', '13');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('1', '14');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('1', '15');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('1', '16');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('1', '17');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('1', '18');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('1', '19');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('1', '20');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('1', '11');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('2', '37');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('2', '38');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('2', '39');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('2', '40');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('2', '41');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('2', '42');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('2', '43');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('2', '44');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('2', '45');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('2', '46');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('3', '21');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('3', '22');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('3', '23');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('3', '24');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('3', '25');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('3', '26');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('3', '27');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('3', '28');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('3', '29');
+INSERT INTO `quizbomb`.`quiz_question` (`quiz_id`, `question_id`) VALUES ('3', '30');
