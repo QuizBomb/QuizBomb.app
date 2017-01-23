@@ -73,7 +73,7 @@
 				<br>
 				<div class="form-group">
 					<label>Password:</label>
-					<form:input path="password" type="text" class="form-control" placeholder="Εισάγετε τον κωδικό πρόσβασης"/>
+					<form:input path="password" type="password" class="form-control" placeholder="Εισάγετε τον κωδικό πρόσβασης"/>
 				</div>
 				</p>
 			<br>

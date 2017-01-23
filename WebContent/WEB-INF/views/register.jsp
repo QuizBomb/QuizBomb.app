@@ -107,7 +107,8 @@
 						<p>
 						<br>
 						
-						<button type="submit" class="btn btn-default">Εγγραφή</button>
+						<button type="submit" class="btn btn-info">Εγγραφή</button>
+						
 					</form:form>
 
 
