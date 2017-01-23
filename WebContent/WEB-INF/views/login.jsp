@@ -4,6 +4,7 @@
     
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<c:set var="contextPath" scope="request" value="${pageContext.request.contextPath }" />
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -15,11 +16,11 @@
 	
 	<title>Είσοδος </title>
 
-	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
-	<link rel="stylesheet" href="resources/css/style.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/style.css">
 
-	<script type="text/javascript" src="resources/js/jquery.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/js/jquery.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -37,14 +38,14 @@
 			</button>
 
 
-			<a class="navbar-brand" href="#">QuizBomb</a>
+			<a class="navbar-brand" href="${contextPath}/">QuizBomb</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="login">Είσοδος</a></li>
-				<li><a href="register">Εγγραφή</a></li>
+				<li class="active"><a href="${contextPath}/login">Είσοδος</a></li>
+				<li><a href="${contextPath}/register">Εγγραφή</a></li>
 			</ul>
 			
 		</div>

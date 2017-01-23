@@ -68,10 +68,10 @@
 		
 	<c:if test="${!empty loggedUser}">
 		
-	   <div class="wrapper container-fluid">
+	   <div class="wrapper container">
       	  <div class="row">
 			
-			<div class="col-md-10 col-md-push-1">
+			<div class="col-md-12">
 				<h4>Δημιουργήστε ένα νέο διαγώνισμα:</h4>
 				
 				<form:form action="${contextPath}/addQuiz" commandName="quiz2" class="form-inline">

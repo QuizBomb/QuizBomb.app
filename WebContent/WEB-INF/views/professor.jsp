@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<c:set var="contextPath" scope="request" value="${pageContext.request.contextPath }" />
 <html>
 <head>
 	<meta charset="utf-8">
@@ -13,11 +14,11 @@
 	
 	<title>Αρχική Σελίδα</title>
 
-	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
-	<link rel="stylesheet" href="resources/css/style.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/style.css">
 
-	<script type="text/javascript" src="resources/js/jquery.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/js/jquery.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -36,7 +37,7 @@
 			</button>
 
 
-			<a class="navbar-brand" href="/QuizBomb/">QuizBomb</a>
+			<a class="navbar-brand" href="${contextPath}/">QuizBomb</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
@@ -49,12 +50,11 @@
 						class="icon-star"></i> Καλωσήρθατε, ${loggedUser.fullName} <b
 						class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="logout"><i class="icon-pencil fa-fw"></i>
+						<li><a href="${contextPath}/logout"><i class="icon-pencil fa-fw"></i>
 								Αποσύνδεση</a></li>
 					</ul></li>
 
 			</ul>
-
 			<!-- /.navbar-collapse -->
 		</div>
 		</div>

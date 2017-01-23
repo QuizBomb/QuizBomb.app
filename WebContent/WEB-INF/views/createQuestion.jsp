@@ -3,6 +3,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<c:set var="contextPath" scope="request" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,11 +15,11 @@
 	
 	<title>Εισαγωγή Ερώτησης</title>
 
-	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
-	<link rel="stylesheet" href="resources/css/style.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/style.css">
 
-	<script type="text/javascript" src="resources/js/jquery.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/js/jquery.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -35,13 +36,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/QuizBomb/">QuizBomb</a>
+                <a class="navbar-brand" href="${contextPath}/">QuizBomb</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="professor">Επιστροφή</a>
+                        <a href="${contextPath}/professor">Επιστροφή</a>
                     </li>
                 </ul>
                  <ul class="nav navbar-nav navbar-right">
@@ -50,7 +51,7 @@
 						<a href="" class="dropdown-toggle" data-toggle="dropdown"  aria-expanded="false"><i class="icon-star"></i> Καλωσήρθατε, ${loggedUser.fullName} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
-							<a href="logout"><i class="icon-pencil fa-fw"></i> Αποσύνδεση</a>
+							<a href="${contextPath}/logout"><i class="icon-pencil fa-fw"></i> Αποσύνδεση</a>
 							</li>
 						</ul>
 					</li>
