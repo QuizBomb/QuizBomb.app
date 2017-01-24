@@ -78,6 +78,14 @@
 
 		<c:if test="${!empty loggedUser}">
 		
+			<c:if test="${scoreAddedSuccessfully}">
+				<div class="alert alert-warning alert-dismissible" role="alert" >
+		  			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  			Η βαθμολογία σας ανανεώθηκε.
+				</div>
+				 <c:remove var="scoreAddedSuccessfully"/>
+			</c:if>
+		
 			<c:if test="${empty quizes}">
 				<h4>Δεν υπάρχουν διαθέσιμα διαγωνίσματα αυτή τη στιγμή</h4>
 			</c:if>

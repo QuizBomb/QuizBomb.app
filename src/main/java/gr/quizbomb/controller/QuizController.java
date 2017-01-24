@@ -42,6 +42,8 @@ public class QuizController {
 			@RequestParam Long sClassId, @RequestParam Long courseId) {
 
 		quizService.createNewQuiz(quiz, sClassId, courseId);
+		
+		session.setAttribute("quizAddedSuccessfully", true);
 
 		return "redirect:/professor";
 	}
@@ -108,6 +110,8 @@ public class QuizController {
 		
 		Score score = new Score(quiz, s, value);
 		scoreService.create(score);
+		
+		session.setAttribute("scoreAddedSuccessfully", true);
 		
 		//Workaround to solve HttpSession issue
 		session.removeAttribute("loggedUser");

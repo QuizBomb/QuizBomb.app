@@ -83,6 +83,14 @@
 				</div>
 				 <c:remove var="questionAddedSuccessfully"/>
 			</c:if>
+			
+			<c:if test="${quizAddedSuccessfully}">
+				<div class="alert alert-warning alert-dismissible" role="alert" >
+		  			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  			Το διαγώνισμα δημιουργήθηκε.
+				</div>
+				 <c:remove var="quizAddedSuccessfully"/>
+			</c:if>
 					
 			<h4>Επιλέξτε μία από τις παρακάτω ενέργειες.</h4>
 
