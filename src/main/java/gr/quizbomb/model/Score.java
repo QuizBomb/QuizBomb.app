@@ -34,6 +34,17 @@ public class Score {
 	@Column(name="created_at", updatable = false)
 	private Date createdAt;
 
+	public Score() {
+		super();
+	}
+
+	public Score(Quiz quiz, Student student, float successrate) {
+		super();
+		this.quiz = quiz;
+		this.student = student;
+		this.successrate = successrate;
+	}
+	
 	public Long getId() {
 		return id;
 	}
