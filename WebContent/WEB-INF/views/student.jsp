@@ -41,7 +41,7 @@
 			</button>
 
 
-			<a class="navbar-brand" href="/QuizBomb/">QuizBomb</a>
+			<a class="navbar-brand" href="${contextPath}/">QuizBomb</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
@@ -54,7 +54,7 @@
 						class="icon-star"></i> Καλωσήρθατε, ${loggedUser.fullName} <b
 						class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="logout"><i class="icon-pencil fa-fw"></i>
+						<li><a href="${contextPath}/logout"><i class="icon-pencil fa-fw"></i>
 								Αποσύνδεση</a></li>
 					</ul></li>
 
