@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import gr.quizbomb.model.Answer;
 import gr.quizbomb.model.Question;
 import gr.quizbomb.model.Quiz;
-import gr.quizbomb.model.helper.CreateQuizSimpler;
-import gr.quizbomb.model.helper.QuestionForQuizSimpler;
+import gr.quizbomb.model.dto.CreateQuizSimpler;
+import gr.quizbomb.model.dto.QuestionForQuizSimpler;
 import gr.quizbomb.service.QuestionService;
 
 @Controller

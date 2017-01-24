@@ -1,4 +1,4 @@
-package gr.quizbomb.model.helper;
+package gr.quizbomb.model.dto;
 
 public class Login {
 	
@@ -21,8 +21,5 @@ public class Login {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public void performLogin(){
-		
-	}
-	
+
 }

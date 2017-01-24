@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import gr.quizbomb.model.Student;
-import gr.quizbomb.model.helper.Register;
+import gr.quizbomb.model.dto.Register;
 import gr.quizbomb.service.SClassService;
-import gr.quizbomb.service.StudentService;
+import gr.quizbomb.service.UserService;
 
 @Controller
 public class RegistrationController {
 
 	@Autowired
-	private StudentService studentService;
+	private UserService studentService;
 	
 	@Autowired
 	private SClassService sClassService;
@@ -35,7 +35,7 @@ public class RegistrationController {
 	public String performRegistration(HttpSession session, Model model, @ModelAttribute("student") Register student){
 	
 		Student newStudent = new Student(student.getFullName(), student.getUsername(), student.getEmail(), student.getPassword(), sClassService.findById(student.getsClassId()));
-		newStudent = studentService.create(newStudent);
+		newStudent = (Student) studentService.create(newStudent);
 		
 		return "redirect:/login";	
 	}

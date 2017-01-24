@@ -4,7 +4,7 @@ import java.util.List;
 
 import gr.quizbomb.model.Quiz;
 import gr.quizbomb.model.SClass;
-import gr.quizbomb.model.helper.CreateQuizSimpler;
+import gr.quizbomb.model.dto.CreateQuizSimpler;
 
 public interface QuizService extends GenericService<Quiz>{
 

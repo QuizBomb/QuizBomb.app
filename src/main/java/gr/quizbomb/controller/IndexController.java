@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import gr.quizbomb.model.User;
-import gr.quizbomb.model.helper.Login;
+import gr.quizbomb.model.dto.Login;
 
 @Controller
 public class IndexController {

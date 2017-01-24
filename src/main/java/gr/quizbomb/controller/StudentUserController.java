@@ -8,29 +8,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import gr.quizbomb.model.Quiz;
-import gr.quizbomb.model.Score;
 import gr.quizbomb.model.Student;
-import gr.quizbomb.model.helper.QuizStudent;
+import gr.quizbomb.model.dto.QuizStudent;
 import gr.quizbomb.service.QuizService;
-import gr.quizbomb.service.ScoreService;
-import gr.quizbomb.service.StudentService;
 
 @Controller
 public class StudentUserController {
 	
 	@Autowired
 	private QuizService quizService;
-
-	@Autowired
-	private ScoreService scoreService;
-
-	@Autowired
-	private StudentService studentService;
 
 	/*
 	 * This method will be implemented after a successful professor log in

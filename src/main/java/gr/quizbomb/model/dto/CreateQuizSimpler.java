@@ -1,4 +1,4 @@
-package gr.quizbomb.model.helper;
+package gr.quizbomb.model.dto;
 
 import java.util.List;
 

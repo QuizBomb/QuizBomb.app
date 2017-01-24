@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import gr.quizbomb.model.Score;
-import gr.quizbomb.model.helper.ScoreClassStatistics;
+import gr.quizbomb.model.dto.ScoreClassStatistics;
 import gr.quizbomb.service.ScoreService;
 
 @Controller

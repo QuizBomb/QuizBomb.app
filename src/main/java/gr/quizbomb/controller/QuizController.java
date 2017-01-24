@@ -20,7 +20,7 @@ import gr.quizbomb.model.Quiz;
 import gr.quizbomb.model.Score;
 import gr.quizbomb.model.Student;
 import gr.quizbomb.model.User;
-import gr.quizbomb.model.helper.CreateQuizSimpler;
+import gr.quizbomb.model.dto.CreateQuizSimpler;
 import gr.quizbomb.service.QuizService;
 import gr.quizbomb.service.ScoreService;
 import gr.quizbomb.service.UserService;

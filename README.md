@@ -25,8 +25,8 @@ To QuizBomb είναι ένα διαδικτυακό φροντιστήριο, �
  
 ## Οδηγίες Εγκατάστασης
 * Εγκατάσταση [MySQL](https://www.mysql.com/)
-* Εισαγωγή πινάκων και αρχικών εγγραφών στη βάση δεδομένων από αυτό το [sql script](https://raw.githubusercontent.com/QuizBomb/QuizBomb.app/master/src/main/resources/scripts/init.sql)
-* Ανανέωση στοιχείων σύνδεσης με τη βάση σε αυτό το [αρχείο](hub.com/QuizBomb/QuizBomb.app/blob/master/src/main/resources/properties/datasource.properties)
+* Εισαγωγή πινάκων και αρχικών εγγραφών στη βάση δεδομένων από αυτό το [sql script](https://raw.githubusercontent.com/QuizBomb/QuizBomb.app/master/src/main/resources/scripts/FinalScript-DBinitialization.sql)
+* Ανανέωση στοιχείων σύνδεσης με τη βάση σε αυτό το [αρχείο](https://github.com/QuizBomb/QuizBomb.app/blob/master/src/main/resources/properties/datasource.properties)
 * Δημιουργία war αρχείου της εφαρμογής 
  * [Εδώ](http://www.codejava.net/ides/eclipse/eclipse-create-deployable-war-file-for-java-web-application) περιγράφεται η διαδικασία δημιουργίας στο [Eclipse](http://www.eclipse.org/)
 * Deploy war αρχείου στον web server της επιλογής σας
