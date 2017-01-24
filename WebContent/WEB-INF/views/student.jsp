@@ -12,6 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    
+    <link rel="shortcut icon" href="${contextPath}/resources/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="${contextPath}/resources/img/favicon.ico" type="image/x-icon">
 	
 	<title>Αρχική Σελίδα</title>
 
@@ -74,34 +77,45 @@
 		</c:if>
 
 		<c:if test="${!empty loggedUser}">
+		
+			<c:if test="${empty quizes}">
+				<h4>Δεν υπάρχουν διαθέσιμα διαγωνίσματα αυτή τη στιγμή</h4>
+			</c:if>
+			
+			<c:if test="${!empty quizes}">
 					
-			<h4>Προβολή των διαγωνισμάτων μου</h4>
+				<h4>Τα διαθέσιμα διαγωνίσματα είναι τα παρακάτω:</h4>
+				<h6>*Σε διαγωνίσματα που έχετε εξεταστεί ήδη, μπορείτε να ελέγξετε τις απαντήσεις που έχετε δόσει</h6>
+					
+				<div class="form-group">
+					<table class="table table-hover table-bordered">
+						<tr>
+				  			<th>Τίτλος</th>
+				  			<th width="100">Μάθημα</th>
+							<th width="20">Ερωτήσεις</th>
+						    <th width="10">Επίδοση</th>
+						    <th width="50">Ενέργειες</th>
+						</tr>
+							<c:forEach items="${quizes}" varStatus="i">
+								<tr>
+								   <td>${quizes[i.index].title}</td>
+								   <td>${quizes[i.index].course}</td>
+								   <td>${fn:length(quizes[i.index].questions)}</td>
+								   <td>${quizes[i.index].successrate}</td>
+								   
+								   	<td style="border-style:hidden; border:0; background-color: #ffffff; align-text: center;">
+								   	
+								   		<c:if test="${quizes[i.index].successrate eq 0.0}"> <input type="button" class="btn btn-info" onclick="location.href='quiz/${quizes[i.index].id}'" value="Εξέταση"></c:if>
+								   		
+								   		<c:if test="${quizes[i.index].successrate > 0.0}"> <input type="button"  class="btn btn-info disabled" value="Προβολή"></c:if>
+								   	</td>
+								   
+								</tr>	
+							</c:forEach>
+					</table>
+				</div>
 				
-			<div class="form-group">
-				<table class="table table-hover table-bordered">
-					<tr>
-			  			<th width="200">Τίτλος Διαγωνίσματος</th>
-			  			<th width="150">Μάθημα</th>
-						<th>Πλήθος Ερωτήσεων</th>
-					    <th>Επίδοση</th>
-					    <th>Ενέργειες</th>
-					</tr>
-						<c:forEach items="${quizes}" varStatus="i">
-							<tr>
-							   <td>${quizes[i.index].title}</td>
-							   <td>${quizes[i.index].course}</td>
-							   <td>${fn:length(quizes[i.index].questions)}</td>
-							   <td>${quizes[i.index].successrate}</td>
-							   
-							   	<td style="border-style:hidden; border:0; background-color: #ffffff; align-text: center;">
-							   	
-							   		<c:if test="${quizes[i.index].successrate eq 0.0}"> <input type="button"  onclick="location.href='quiz/${quizes[i.index].id}'" value="Εξέταση"></c:if>
-							   	</td>
-							   
-							</tr>	
-						</c:forEach>
-				</table>
-			</div>
+			</c:if>
 				
 
 		</c:if>

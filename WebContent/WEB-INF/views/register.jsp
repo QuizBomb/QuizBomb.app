@@ -12,6 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    
+    <link rel="shortcut icon" href="${contextPath}/resources/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="${contextPath}/resources/img/favicon.ico" type="image/x-icon">
 	
 	<title>Εγγραφή</title>
 
@@ -58,9 +61,14 @@
 			<div class="row">
 				<div class="form-box">
 					<h1>
-						Form <span>Registration</span>
+						Φόρμα Εγγραφής
 					</h1>
-
+					
+					<ul class="nav nav-tabs">
+						 <li role="presentation" class="active"><a>Μαθητής</a></li>
+						 <li role="presentation" class="disabled"><a>Καθηγητής</a></li>
+					</ul>
+					<br>
 					<form:form action="performRegistration" commandName="student"
 						class="form-inline form-group">
 						

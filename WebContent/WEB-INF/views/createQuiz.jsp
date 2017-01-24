@@ -8,7 +8,15 @@
 
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="shortcut icon" href="${contextPath}/resources/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="${contextPath}/resources/img/favicon.ico" type="image/x-icon">
+    
 	<title>Δημιουργία Διαγωνίσματος</title>
 
 	<!--  <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/bootstrap.min.css'/>"> -->
@@ -125,7 +133,9 @@
 										<tr>
 											<td><input type="checkbox" name="questions[${i.index}].selected" value="true"/></td>
 											<form:input type="hidden" path="questions[${i.index}].id" value="${questions[i.index].id}"/>
-											<td><form:input type="text" path="questions[${i.index}].text" value="${questions[i.index].text}" disabled="true" style="border:none; background-color:transparent;"/></td>
+											<!-- <td><form:input type="text" path="questions[${i.index}].text" value="${questions[i.index].text}" disabled="true" style="border:none; background-color:transparent;"/></td>-->
+											
+											<td>${quiz.questions[i.index].text }</td>
 										    <c:forEach begin="0" end="3" varStatus="val">
 												<c:choose>
 			                						<c:when test="${quiz.questions[i.index].answer[val.index].correct==true}">

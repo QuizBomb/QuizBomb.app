@@ -10,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    
+    <link rel="shortcut icon" href="${contextPath}/resources/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="${contextPath}/resources/img/favicon.ico" type="image/x-icon">
 	
 	<title>Προβολή Ερωτήσεων</title>
 
@@ -83,13 +86,13 @@
 				<h6>*Οι σωστές απαντήσεις εμφανίζονται με πράσινο χρώμα</h6>
 				<table class="tg">
 				<tr>
-				    <th>Id</th>
+				    <th width="10">Id</th>
 					<th width="100">Ερώτηση</th>
 					<th width="100">Απάντηση 1</th>
 					<th width="100">Απάντηση 2</th>
 					<th width="100">Απάντηση 3</th>
 					<th width="100">Απάντηση 4</th>
-					<th>Ενέργειες</th>
+					<th width="200">Ενέργειες</th>
 				</tr>
 				<c:forEach items="${questionsList}" var="question" >
 					<tr>
@@ -97,7 +100,7 @@
 						<td>${question.text}</td>
 						 <c:choose>
 			                <c:when test="${question.answer[0].correct==true}">
-			                  <td style="background-color:green"><b>${question.answer[0].content}</b></td>
+			                  <td style="color:green"><b>${question.answer[0].content}</b></td>
 			               </c:when>
 						  <c:otherwise>
 			                  <td>${question.answer[0].content}</td>
