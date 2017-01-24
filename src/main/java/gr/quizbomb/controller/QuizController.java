@@ -19,9 +19,11 @@ import gr.quizbomb.model.Question;
 import gr.quizbomb.model.Quiz;
 import gr.quizbomb.model.Score;
 import gr.quizbomb.model.Student;
+import gr.quizbomb.model.User;
 import gr.quizbomb.model.helper.CreateQuizSimpler;
 import gr.quizbomb.service.QuizService;
 import gr.quizbomb.service.ScoreService;
+import gr.quizbomb.service.UserService;
 
 @Controller
 public class QuizController {
@@ -31,15 +33,15 @@ public class QuizController {
 	
 	@Autowired
 	private ScoreService scoreService;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "/addQuiz", method = RequestMethod.POST)
 	public String getProfessorHomePage(HttpSession session, @ModelAttribute("quiz2") CreateQuizSimpler quiz,
 			@RequestParam Long sClassId, @RequestParam Long courseId) {
 
 		quizService.createNewQuiz(quiz, sClassId, courseId);
-
-		
-		System.out.println(quiz.getQuestions().size());
 
 		return "redirect:/professor";
 	}
@@ -106,6 +108,12 @@ public class QuizController {
 		
 		Score score = new Score(quiz, s, value);
 		scoreService.create(score);
+		
+		//Workaround to solve HttpSession issue
+		session.removeAttribute("loggedUser");
+		User logged = userService.findById(s.getId());
+		session.setAttribute("loggedUser", logged);
+		
 		return "redirect:/student";
 	}
 	
